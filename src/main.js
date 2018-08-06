@@ -5,16 +5,20 @@ import App from './App'
 import router from './router'
 import VueOnsen from 'vue-onsenui'
 
-import 'onsenui/css/onsenui.css'
-import 'onsenui/css/onsen-css-components.css'
+import 'onsenui/css/onsenui.min.css'
+import 'onsenui/css/onsen-css-components.min.css'
 
 Vue.use(VueOnsen)
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
   template: '<App/>'
+})
+
+router.beforeEach((to, from, next) => {
+  document.title = `cnr - ${to.meta.title}`
+  next()
 })
